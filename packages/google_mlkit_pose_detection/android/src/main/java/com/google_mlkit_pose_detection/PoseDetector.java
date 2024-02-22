@@ -70,11 +70,13 @@ public class PoseDetector implements MethodChannel.MethodCallHandler {
             String model = (String) options.get("model");
             if (model.equals("base")) {
                 PoseDetectorOptions detectorOptions = new PoseDetectorOptions.Builder()
+                        .setPreferredHardwareConfigs(PoseDetectorOptions.CPU_GPU)
                         .setDetectorMode(detectorMode)
                         .build();
                 poseDetector = PoseDetection.getClient(detectorOptions);
             } else {
                 AccuratePoseDetectorOptions detectorOptions = new AccuratePoseDetectorOptions.Builder()
+                        .setPreferredHardwareConfigs(PoseDetectorOptions.CPU_GPU)
                         .setDetectorMode(detectorMode)
                         .build();
                 poseDetector = PoseDetection.getClient(detectorOptions);
